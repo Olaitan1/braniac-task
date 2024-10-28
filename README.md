@@ -24,27 +24,38 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+BRAINIAC & AUTOBUYNG BACKEND DEVELOPER ASSESSMENT
 
+
+## TO START THE APP:
 ## Installation
 
 ```bash
 $ yarn install
+or
+$ npm install
 ```
 
 ## ADD ENV FILE
+create an env file just like the env-sample file in the folder
 
 ## Running the app
 
 ```bash
 # development
 $ yarn run start
+or 
+$ npm run start
 
 # watch mode
 $ yarn run start:dev
+or
+$ npm run start:dev
 
 # production mode
 $ yarn run start:prod
+or 
+$ npm run start:prod
 ```
 ## DEPLOYED LINK 
 https://braniac-task.onrender.com
@@ -53,12 +64,18 @@ https://braniac-task.onrender.com
 ```bash
 # unit tests
 $ yarn run test
+or 
+$ npm run test
 
 # e2e tests
 $ yarn run test:e2e
+or 
+$ npm run test:e2e
 
 # test coverage
 $ yarn run test:cov
+or
+$ npm run test:cov
 ```
 
 ## Support
@@ -67,9 +84,8 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Author - [Olaitan Olanrewaju](mailto:holaitan4@gmail.com)
+
 
 ## License
 
