@@ -32,6 +32,8 @@
 $ yarn install
 ```
 
+## ADD ENV FILE
+
 ## Running the app
 
 ```bash
@@ -44,7 +46,8 @@ $ yarn run start:dev
 # production mode
 $ yarn run start:prod
 ```
-
+## DEPLOYED LINK 
+https://braniac-task.onrender.com
 ## Test
 
 ```bash

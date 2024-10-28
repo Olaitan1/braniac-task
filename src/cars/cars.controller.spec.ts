@@ -3,9 +3,20 @@ import { CarsController } from './cars.controller';
 import { CarsService } from './cars.service';
 import { CloudinaryConfigService } from '../config/cloudinary/cloudinary.config';
 import { BadRequestException } from '@nestjs/common';
-import { CreateCarDto, FilterCarsDto } from './dto/cars.dto';
-import { UserRole } from 'src/schemas/user.schema';
+import { FilterCarsDto } from './dto/cars.dto';
+import { IsString, IsNotEmpty, IsNumber, IsBoolean } from 'class-validator';
 import { Request } from 'express';
+
+class CreateCarDto {
+  @IsString() @IsNotEmpty() make: string;
+  @IsString() @IsNotEmpty() models: string;
+  @IsString() @IsNotEmpty() seller: string;
+  @IsNumber() @IsNotEmpty() year: number;
+  @IsNumber() @IsNotEmpty() mileage: number;
+  @IsNumber() @IsNotEmpty() price: number;
+  @IsString() @IsNotEmpty() description: string;
+  @IsBoolean() @IsNotEmpty() isAvailable: boolean;
+}
 
 describe('CarsController', () => {
   let carsController: CarsController;
@@ -15,9 +26,13 @@ describe('CarsController', () => {
   const mockCar = {
     _id: 'mockCarId',
     make: 'Toyota',
-    model: 'Corolla',
+    models: 'Corolla',
     year: 2020,
     seller: 'mockSellerId',
+    mileage: 50,
+    price: 30,
+    description: '',
+    isAvailable: false,
   };
 
   const mockCarsService = {
@@ -54,11 +69,12 @@ describe('CarsController', () => {
       const createCarDto: CreateCarDto = {
         make: 'Toyota',
         models: 'Corolla',
-        description:'good',
         year: 2020,
+        seller: 'mockSellerId',
         mileage: 50,
         price: 30,
         isAvailable: false,
+        description: '',
       };
       const req = { user: { id: 'mockSellerId' } } as Request;
 
@@ -73,14 +89,22 @@ describe('CarsController', () => {
       );
     });
 
-    // it('should handle missing required fields', async () => {
-    //   const createCarDto: CreateCarDto = {}; 
-    //   const req = { user: { id: 'mockSellerId' } } as Request;
+    it('should handle missing required fields', async () => {
+      const createCarDto: Partial<CreateCarDto> = {
+        make: 'Toyota',
+        models: 'Corolla',
+        year: 2020,
+        seller: 'mockSellerId',
+        mileage: 50,
+        price: 30,
+        isAvailable: false,
+      };
+      const req = { user: { id: 'mockSellerId' } } as Request;
 
-    //   await expect(carsController.createCar(createCarDto, req)).rejects.toThrow(
-    //     BadRequestException,
-    //   );
-    // });
+      await expect(
+        carsController.createCar(createCarDto as CreateCarDto, req),
+      ).rejects.toThrow(BadRequestException);
+    });
   });
 
   describe('addCarImages', () => {
